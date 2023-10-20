@@ -92,30 +92,43 @@ const inChargeName = computed(() => {
             :data-bs-target="'#collapse' + props.obj.id" :aria-expanded="isActiveCollapse" :aria-controls="props.obj.id"
             :style="'border-bottom: 4px solid' + props.obj.color">
 
-            <div class="d-flex justify-content-between mt-3">
+            <div class="d-flex justify-content-between mt-3 w-full">
 
                 <!-- Primera columna -->
                 <div class="flex-fill mr-10">
-                    <div class="mb-2">{{ props.obj.name }}</div>
+                    <div class="mb-2 text-blue-bold">{{ props.obj.name }}</div>
                     <div>{{ props.obj.degree }}</div>
                 </div>
 
                 <!-- Segunda columna -->
                 <div class="flex-fill mr-16">
-                    <div class="mb-2">{{ props.obj.subject }}</div>
-                    <div>{{ props.obj.teacher }}</div>
+                    <div class="mb-2 text-blue-bold">{{ props.obj.subject }}</div>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <i class="fa-regular fa-graduation-cap mr-2"></i>
+                        <div>{{ props.obj.teacher }}</div>
+                    </div>
                 </div>
 
                 <!-- Tercera columna -->
                 <div class="flex-fill mr-10">
-                    <div class="mb-2">{{ props.obj.classroom }}</div>
-                    <div>{{ props.obj.date }} {{ props.obj.start_hour }} - {{ props.obj.end_hour }}</div>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <!-- No encontre el icono en fonticons, pero se puede importar desde figma. Puse uno parecida -->
+                        <i class="fa-regular fa-house-chimney-window mr-2"></i>
+                        <div class="text-black-bold">{{ props.obj.classroom }}</div>
+                    </div>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <i class="fa-regular fa-clock mr-2"></i>
+                        <div>{{ props.obj.date }} {{ props.obj.start_hour }} - {{ props.obj.end_hour }}</div>
+                    </div>
                 </div>
 
                 <!-- Cuarta columna -->
-                <div class="flex-fill mr-10">
-                    <div class="mb-2">{{ props.obj.active_students }}/{{ props.obj.max_students }}</div>
-                    <div>Alumnos</div>
+                <div class="flex flex-col">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <i class="fa-regular fa-circle-user mr-2"></i>
+                        <div class="text-right text-black-bold">{{ props.obj.active_students }}/{{ props.obj.max_students }}</div>
+                    </div>
+                    <div class="text-right">Alumnos</div>
                 </div>
 
             </div>
@@ -138,9 +151,6 @@ const inChargeName = computed(() => {
                     <div class="table-container">
                         <table class="table-target">
                             <tbody>
-                                <tr class="table-divider-row">
-                                    <td colspan="5" class="table-divider"></td>
-                                </tr>
                                 <tr class="table-row" v-for="student in props.obj.students" :key="student.id">
                                     <td class="student-photo">
                                         <img :src="student.photo_url" class="w-10 rounded-circle">
@@ -157,6 +167,13 @@ const inChargeName = computed(() => {
 </template>
 
 <style scoped>
+.text-black-bold {
+    font-weight: bold;
+}
+.text-blue-bold {
+    color: #2b5db6;
+    font-weight: bold;
+}
 .form-control {
     border: 1px solid #D3D6DC;
 }
@@ -392,4 +409,4 @@ const inChargeName = computed(() => {
 .container-fluid {
     padding-top: 1rem;
 }
-</style> 
+</style>
