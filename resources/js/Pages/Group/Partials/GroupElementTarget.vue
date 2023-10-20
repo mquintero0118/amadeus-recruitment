@@ -148,10 +148,39 @@ const inChargeName = computed(() => {
                     </div>
                 </div>
                 <div class="container-body">
-                    <div class="table-container">
+                    <!-- Aqui voy a dejar 2 soluciones diferentes -->
+                    <!-- El v-if es solo para iterar las 2 soluciones -->
+                    <div v-if="props.obj.id === 1 || props.obj.id === 3" class="table-contain">
+                        <!-- El pading aqui para añadir los border del header -->
+                        <div v-for="student in props.obj.students" :key="student.id" class="d-flex justify-content-between mt-3 w-full table-row" style="padding: 0rem 9.5rem 0rem 6.5rem;">
+
+                            <!-- Primera columna -->
+                            <div class="flex-fill mr-10">
+                                <img :src="student.photo_url" class="w-10 rounded-circle mb-2">
+                            </div>
+
+                            <!-- Segunda columna -->
+                            <div class="flex-fill mr-16">
+                                <div> {{ student.name }} {{ student.surname }} </div>
+                            </div>
+
+                            <!-- Tercera columna -->
+                            <!-- Dejo esta aqui para añadir el espacio y alinear todo -->
+                            <div class="flex-fill mr-10">
+
+                            </div>
+
+                            <!-- Cuarta columna -->
+                            <div class="px-4 d-flex flex-row justify-content-end">
+                                <i style="color: #2b5db6" class="fa-regular fa-calendar mr-2"></i>
+                                <i style="color: #2b5db6" class="fa-regular fa-trash-can"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div v-else class="table-container">
                         <table class="table-target">
                             <tbody>
-                            <!-- Si se requiere que quede alineado con las rows del container target, hay que copiar esa estructura aqui -->
                             <tr class="table-row" v-for="student in props.obj.students" :key="student.id">
                                 <td style="width: 28%" class="student-photo d-flex flex-row justify-content-between align-items-center">
                                     <img :src="student.photo_url" class="w-10 rounded-circle">
