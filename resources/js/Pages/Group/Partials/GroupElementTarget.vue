@@ -1,3 +1,7 @@
+<!--// Nombre: Manuel Quintero -->
+<!--// La prueba estuvo bastante entretenido y muy clarificada, tengo bastante tiempo trabajando con esto asi que lo vi
+ bastante facil, tarde 1 hora y 15 mins aprox, lo unico que batalle fue con la sitaxis de las clases ya que tenia mucho de no usar bootstrap/tailwind,
+ me hubiera encantado agregar mas opciones de como hacer las cosas pero olvide el cargador de la laptop :( -->
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import Modal from '@/Components/Amadeus/Modal.vue';
@@ -139,6 +143,8 @@ const inChargeName = computed(() => {
             <div class="collapse" :class="'collapse' + props.obj.id" :id="'collapse' + props.obj.id">
                 <div class="container-header">
                     <div class="searchbar">
+                        <!-- Si tambien se quisiera alinear de manera exacta podemos hacer un approach parecido -->
+                        <!-- crear un row col-9 y col-3 y añadir los bordes de lado -->
                         <input type="text" class="form-control" v-model="searchQuery">
                         <a><i class="fa-light fa-magnifying-glass"></i></a>
                         <a v-if="permissions.includes('department.subject.store')" type="button" data-bs-toggle="modal"
