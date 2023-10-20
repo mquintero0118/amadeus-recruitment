@@ -151,12 +151,17 @@ const inChargeName = computed(() => {
                     <div class="table-container">
                         <table class="table-target">
                             <tbody>
-                                <tr class="table-row" v-for="student in props.obj.students" :key="student.id">
-                                    <td class="student-photo">
-                                        <img :src="student.photo_url" class="w-10 rounded-circle">
-                                    </td>
-                                    <td class="table-cell-text"> {{ student.name }} {{ student.surname }} </td>
-                                </tr>
+                            <!-- Si se requiere que quede alineado con las rows del container target, hay que copiar esa estructura aqui -->
+                            <tr class="table-row" v-for="student in props.obj.students" :key="student.id">
+                                <td style="width: 28%" class="student-photo d-flex flex-row justify-content-between align-items-center">
+                                    <img :src="student.photo_url" class="w-10 rounded-circle">
+                                    <div> {{ student.name }} {{ student.surname }} </div>
+                                </td>
+                                <td style="width: 43%" class="px-4 d-flex flex-row justify-content-end">
+                                    <i style="color: #2b5db6" class="fa-regular fa-calendar mr-2"></i>
+                                    <i style="color: #2b5db6" class="fa-regular fa-trash-can"></i>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -314,7 +319,7 @@ const inChargeName = computed(() => {
 
 .table-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid #AEC4E5;
     padding: 0.9rem 0;
